@@ -29,6 +29,17 @@ public class MinesweeperServe extends HttpServlet {
     public MinesweeperServe() {
         super();
         board = new Board(new RandomMineInitializationStrategy());
+        
+        Square square[][] = board.getSquares();
+        for(int i=0;i<square.length;i++){
+        	for(int j=0;j<square[i].length;j++){
+        		if(	square[i][j].isMine()){
+        			System.out.println("Mine at = "+i+","+j);
+        		}
+        		
+        	}
+        }
+        
     }
 
 	/**
@@ -47,9 +58,9 @@ public class MinesweeperServe extends HttpServlet {
 						  HttpServletResponse response) 
 								  throws ServletException, IOException {
 		
-		System.out.println("Control in doPost()");
+		//System.out.println("Control in doPost()");
 		String action = request.getParameter("action");
-		System.out.println("Action = "+action);
+		//System.out.println("Action = "+action);
 		int mCount=0;
 		JSONObject object=new JSONObject();
 		if(action != null){

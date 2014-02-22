@@ -13,7 +13,6 @@
 <script type="text/javascript" language="javascript"  src="js/jquery-1.4.2.min.js"></script>
 <title>Minesweeper</title>
 
-
 </head>
 
 <%
@@ -28,12 +27,6 @@ if("true".equals(request.getAttribute("gameOver"))) {
 <div id="contents">
 	<h2>Minesweeper</h2>
 	<div id="board" oncontextmenu="return false;" ondrag="return false;" ondragstart="return false;">
-		<table class="ms-grid">
-			<tr>
-				<td>Hello</td>
-				<td>World</td>
-			</tr>
-		</table>
 		<SCRIPT Language="JavaScript">
 <!-- 
 		document.write('<table class="gridtab"  border="1" cellspacing="1" cellpadding="5">');
@@ -41,7 +34,7 @@ if("true".equals(request.getAttribute("gameOver"))) {
 		for(i=0;i<6;i++){
 			 document.write('<tr>');
 		for(j=0;j<6;j++){
-			   document.write('<td class ="square" id="'+i+'-'+j+'">'+i+','+j +'</td>');
+			   document.write('<td class ="square" id="'+i+'-'+j+'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>');//<td class="equalRelative">&nbsp;</td>
 			   
 		}
 			   document.write('</tr>');
@@ -78,7 +71,8 @@ $('.square').bind('click', function(e) {
 	    			if(mCount >= 1000){
 	    				$('#'+e.target.id).html(" <img src='images/mine.jpg' />");
 		   				gameOver = true;
-
+		   				document.write('<h2> Game Over!</h2>');
+		   				document.write('<a href="http://localhost:8080/Proj12(Feb17)/game.jsp">New Game</a> ');
 	   				}
 	   				else{
 	   					$('#'+e.target.id).text(mCount);
