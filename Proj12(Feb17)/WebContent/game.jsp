@@ -14,18 +14,22 @@
 <title>Minesweeper</title>
 
 </head>
-
 <%
-if("true".equals(request.getAttribute("gameOver"))) {
-	out.print("<h3 class='gameOver'>Game Over !</h3>");
-	out.print("<a href=\"./MinesweeperServe\">New game</a>");
+{
+	if("true".equals(request.getAttribute("gameOver"))) {
+		out.print("<h3 class='gameOver'>Game Over !</h3>");
+		out.print("<a href=\"./MinesweeperServe\">New game</a>");
+	}
 }
-
 %>
+
+
+
 
 <body>
 <div id="contents">
-	<h2>Minesweeper</h2>
+	<h2 id ="MineHeading">Minesweeper</h2>
+	<a id = "newGameLink" href="./">  </a>
 	<div id="board" oncontextmenu="return false;" ondrag="return false;" ondragstart="return false;">
 		<SCRIPT Language="JavaScript">
 <!-- 
@@ -71,8 +75,11 @@ $('.square').bind('click', function(e) {
 	    			if(mCount >= 1000){
 	    				$('#'+e.target.id).html(" <img src='images/mine.jpg' />");
 		   				gameOver = true;
-		   				document.write('<h2> Game Over!</h2>');
-		   				document.write('<a href="http://localhost:8080/Proj12(Feb17)/game.jsp">New Game</a> ');
+		   				document.getElementById("MineHeading").innerHTML="Game Over!";
+		   				document.getElementById("MineHeading").style.color="red"; 
+		   				
+		   				document.getElementById("newGameLink").innerHTML = "New Game" ;
+		   				
 	   				}
 	   				else{
 	   					$('#'+e.target.id).text(mCount);
